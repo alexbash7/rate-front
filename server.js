@@ -6,10 +6,8 @@ const path = require('path');
 const app = express();
 
 // app.use('/', serveStatic(path.join(__dirname, '/dist')));
-// app.use(express.static(__dirname + '/dist'));
-app.get('/', function(req, res){
-    res.render('dist/index.html');
-  });
+app.use(express.static(__dirname + '/dist'));
+
 
 app.get('/people', function (req, res) {
     res.send('hello');
