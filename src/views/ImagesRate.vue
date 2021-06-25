@@ -3,16 +3,12 @@
         <div v-if="!isInitiated">Loading</div>
         <div v-if="isInitiated">
             <div class="menu1">
-                <button v-shortkey.once="[',']" @shortkey="previousSlide()" @click="previousSlide()">&lt;</button>
-                <button v-shortkey.once="['p']" @shortkey="stopOrPlay()" @click="stopOrPlay()" :class="{active: isStopped}">P</button>
+                <button v-shortkey.once="['arrowleft']" @shortkey="previousSlide()" @click="previousSlide()">&lt;</button>
+                <button v-shortkey.once="['arrowdown']" @shortkey="stopOrPlay()" @click="stopOrPlay()" :class="{active: isStopped}">P</button>
             </div>
             <div class="menu2">
-                <button
-                    v-for="i in 4"
-                    v-bind:key="i"
-                    v-shortkey.once="[i]" @shortkey="rateImages(i); btnCounter++;" @click="rateImages(i); btnCounter++;"
-                    :class="{active: activeScore == i}"
-                >{{ i }}</button>
+                <button v-shortkey.once="['1']" @shortkey="rateImages(1); btnCounter++;" @click="rateImages(1); btnCounter++;">1</button>
+                <button v-shortkey.once="['arrowup']" @shortkey="rateImages(3); btnCounter++;" @click="rateImages(3); btnCounter++;">3</button>
                 <div>
                 <span>Profiles showed: {{profileCounter}} </span>
                 </div>
