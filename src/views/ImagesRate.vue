@@ -194,9 +194,10 @@ export default {
             if (wasStopped) {
                 this.updateSlide(true);
                 this.getNextAndPreload();
-            } else
+            } else {
                 this.cancelLoad();
                 Axios.get(config.apiUrl('pauseImages')).then(res => {});
+            }
         },
         cancelLoad() {
             this.loadingSlideUUIDs = [];
