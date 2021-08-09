@@ -113,7 +113,7 @@ export default {
 
             for (var i = 0; i < arr.length; i += size)
                 grouped.push(arr.slice(i, i + size));
-            
+
             return grouped;
         },
         getNextAndPreload(onComplete) {
@@ -145,7 +145,7 @@ export default {
                     for (var i = 0; i < nextImagesData.length; i++) {
                         urls.push(nextImagesData[i].url);
                     }
-                    
+
                     Preload(urls, {
                         order: Order.AllAtOnce,
                         onSingleImageFail: () => {
@@ -156,7 +156,7 @@ export default {
                         }
                     });
                 });
-            
+
             return requestUUID;
         },
         onPreloadComplete(requestUUID, nextImagesData, callback) {
@@ -169,7 +169,7 @@ export default {
             if (callback)
                 callback();
         },
-        
+
         previousSlide() {
             this.cancelLoad();
             this.getPrevAndPreload(() => {
@@ -196,6 +196,7 @@ export default {
                 this.getNextAndPreload();
             } else
                 this.cancelLoad();
+                Axios.get(config.apiUrl('pauseImages')).then(res => {});
         },
         cancelLoad() {
             this.loadingSlideUUIDs = [];
