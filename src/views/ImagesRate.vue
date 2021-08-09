@@ -195,8 +195,11 @@ export default {
                 this.updateSlide(true);
                 this.getNextAndPreload();
             } else {
+                Axios
+                  .post(config.apiUrl('pauseImages'), { action: 'pauseClick' })
+                  .then(res => {
+                  });
                 this.cancelLoad();
-                Axios.get(config.apiUrl('pauseImages')).then(res => {});
             }
         },
         cancelLoad() {
